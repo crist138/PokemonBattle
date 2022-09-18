@@ -1,0 +1,164 @@
+import pokemones.Pokemon;
+import java.util.*;
+public class index {
+
+	public static void main(String args[]) {
+	Scanner in = new Scanner(System.in);
+	Random ran = new Random();
+
+		// Variables
+		Boolean flag = false, win=false;
+		int i,opt,vidaVaporeon=100,damageVaporeon=0;
+
+
+
+
+		// First pokemon
+		Pokemon pkmn1 = new Pokemon();
+		pkmn1.nombre = "Pikachu";
+		pkmn1.vida = 100;
+
+		// Pasando a tipo String
+		pkmn1.tipoAsign = String.valueOf(pkmn1.tipo);
+
+		System.out.println("============ Menu De Seleccion ============");
+		System.out.print("Cual tipo quieres: \n1: Electrico\n2: Agua\nOpcion: ");
+		pkmn1.tipo = in.nextInt();
+
+
+		switch(pkmn1.tipo){
+		case 1:  
+				pkmn1.tipoAsign = "Electrico";
+
+				// Asignando Ataques
+				pkmn1.ataques[0] = "Trueno";
+				pkmn1.danio[0] = ran.nextInt(50-5+1)+5;
+
+				pkmn1.ataques[1] = "Chispaso";
+				pkmn1.danio[1] = ran.nextInt(20-5+1)+5;
+
+				pkmn1.ataques[2] = "Bola Voltio";
+				pkmn1.danio[2] = ran.nextInt(50-5+1)+5;
+
+				pkmn1.ataques[3] = "Rayo";
+				pkmn1.danio[3] = ran.nextInt(40-5+1)+5;
+		break;
+		case 2: 
+				pkmn1.tipoAsign = "Agua";
+		break;
+
+		default:
+			System.out.println("Desconocido");
+			flag = true;
+		
+		}
+		if(!flag){
+		System.out.println("\n\nTu pokemon es tipo "+pkmn1.tipoAsign+" y tiene estos ataques:");
+			for(i=0;i<4;i++){
+				System.out.print(i+1+".-"+pkmn1.ataques[i]+"\n");
+		}
+
+		switch(pkmn1.tipo){
+		case 1: 
+			System.out.println("============ Combate ============");
+			System.out.println("Tu oponente es Vaporeon de tipo agua con 100 de vida!");
+
+			while(vidaVaporeon>0){
+			System.out.println("Vida actual: "+pkmn1.vida+"\nVida de VAPOREON: "+vidaVaporeon);
+			System.out.println("Ataques: ");
+				for(i=0;i<4;i++){
+					System.out.print(i+1+".-"+pkmn1.ataques[i]+"\t\t");
+						if(i==1){
+							System.out.println();
+						}
+				}
+				do{
+			System.out.println("Es tu turno, elige tu ataque: ");
+			opt = in.nextInt();
+
+				}while(opt>4);
+
+				switch(opt){
+				case 1: 
+					vidaVaporeon-=pkmn1.danio[0];
+					System.out.println("\n\n");
+					System.out.println("Usaste "+pkmn1.ataques[0]+" y haz quitado "+pkmn1.danio[0]+"!\n";
+					pkmn1.danio[0] = ran.nextInt(50-5+1)+5;
+					if(vidaVaporeon<0){
+						vidaVaporeon=0;
+					}
+
+					System.out.println("\n\n");
+					damageVaporeon = ran.nextInt(30-2+1)+2;
+					System.out.println("Es turno de VAPOREON,\n Uso ataque misterioso y te bajo: "+damageVaporeon); 
+					pkmn1.vida-=damageVaporeon;
+					System.out.println("\n\n");
+
+
+				break;
+				case 2: 
+					vidaVaporeon-=pkmn1.danio[1];
+					System.out.println("\n\n");
+					System.out.println("Usaste "+pkmn1.ataques[1]+" y le haz quitado "+pkmn1.danio[1]+"!\n");
+					pkmn1.danio[1] = ran.nextInt(20-5+1)+5;
+					if(vidaVaporeon<0){
+						vidaVaporeon=0;
+					}
+
+					System.out.println("\n\n");
+					damageVaporeon = ran.nextInt(40-2+1)+2;
+					System.out.println("Es turno de VAPOREON,\n Uso ataque misterioso y te bajo: "+damageVaporeon); 
+					pkmn1.vida-=damageVaporeon;
+					System.out.println("\n\n");
+
+
+				break;
+				case 3: 
+					vidaVaporeon-=pkmn1.danio[2];
+					System.out.println("\n\n");
+					System.out.println("Usaste "+pkmn1.ataques[2]+" y le haz quitado "+pkmn1.danio[2]+"!\n"+);
+					pkmn1.danio[2] = ran.nextInt(50-5+1)+5;
+					if(vidaVaporeon<0){
+						vidaVaporeon=0;
+					}
+
+					System.out.println("\n\n");
+					damageVaporeon = ran.nextInt(20-2+1)+2;
+					System.out.println("Es turno de VAPOREON,\n Uso ataque misterioso y te bajo: "+damageVaporeon); 
+					pkmn1.vida-=damageVaporeon;
+					System.out.println("\n\n");
+
+				break;
+				case 4: 
+					vidaVaporeon-=pkmn1.danio[3];
+					System.out.println("\n\n");
+					System.out.println("Usaste "+pkmn1.ataques[3]+" y le haz quitado "+pkmn1.danio[3]+"!\n Vida restante de Vaporeon: "+vidaVaporeon);
+					pkmn1.danio[3] = ran.nextInt(40-5+1)+5;
+					if(vidaVaporeon<0){
+						vidaVaporeon=0;
+					}
+
+					System.out.println("\n\n");
+					damageVaporeon = ran.nextInt(50-2+1)+2;
+					System.out.println("Es turno de VAPOREON,\n Uso ataque misterioso y te bajo: "+damageVaporeon); 
+					pkmn1.vida-=damageVaporeon;
+					System.out.println("\n\n");
+
+				 break;
+				}
+
+				if(vidaVaporeon==0){
+					System.out.println("muelto");
+				}
+
+			}
+		break;
+
+			}
+		}
+		
+
+		
+
+	}
+}
