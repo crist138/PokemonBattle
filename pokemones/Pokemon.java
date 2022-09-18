@@ -12,7 +12,7 @@ Random ran = new Random();
 	protected String nombre;
 	protected int tipo; // 1.- info.txt
 	protected int nivel;
-	protected int vida = 100;
+	public int vida = 100;
 	public String[] ataques = new String[4];
 
 // Constructor
@@ -32,8 +32,19 @@ Random ran = new Random();
 
 //Metodoslol
 	public void mostrarDatos(){
-		System.out.println("Tu pokemon es: "+nombre+"\nSu tipo numero de tipo es: "+tipo+"\nQue es equivalente a tipo: "+getTipo(tipo)+"\nTiene "+vida+" de vida cuidalo musho");
+		int i;
+		System.out.println("===================================================");
+		System.out.println("|\t\t\t\t\t\t  |");
+		System.out.println("|\t\t       Info\t\t\t  |");
+		System.out.println("|\t\t\t\t\t\t  |");
+		System.out.println("===================================================\n\n");
+		System.out.println("\tEl pokemon es: "+nombre+"\n\tSu tipo numero de tipo es: "+tipo+"\n\tQue es equivalente a tipo: "+getTipo(tipo)+"\n\tTiene "+vida+" de vida cuidalo musho");
 		
+		System.out.println("\tSus ataques son: ");
+		for(i=0;i<4;i++){
+			System.out.print("\t"+i+1+".- "+ataques[i]+"\n");
+		}
+		System.out.println("\n");
 	}
 	
 	public String getTipo(int tipo){
@@ -46,6 +57,47 @@ Random ran = new Random();
 	return tipoPkmn;
 
 	}
+
+	public void mostrarVida(){
+		if(vida==100){
+			System.out.println("-  ||||||||||||||||||||||||||||||  -");
+		} else if(vida>90){
+			System.out.println("-  |||||||||||||||||||||||||||||.  -");
+		} else if(vida>80){
+			System.out.println("-  ||||||||||||||||||||||||||||..  -");
+		} else if(vida>70){
+			System.out.println("-  ||||||||||||||||||||||||||....  -");
+		} else if(vida>60){
+			System.out.println("-  ||||||||||||||||||||||||......  -");
+		} else if(vida>50){
+			System.out.println("-  ||||||||||||||||||||||........  -");
+		} else if(vida>40){
+			System.out.println("-  |||||||||||||||||||...........  -");
+		} else if(vida>30){
+			System.out.println("-  |||||||||||||.................  -");
+		} else if(vida>20){
+			System.out.println("-  ||||||||||....................  -");
+		} else if(vida>10){
+			System.out.println("-  ||||||........................  -");
+		} else if(vida>5){
+			System.out.println("-  ||............................  -");
+		} else if(vida>1){
+			System.out.println("-  |.............................  -");
+		}
+	}
+
+	public int atacar(int opt){
+		int damage=0;
+		switch(opt){
+		case 1: damage = ran.nextInt(50-5+1)+5; break;
+		case 2: damage = ran.nextInt(35-5+1)+5; break;
+		case 3: damage = ran.nextInt(40-5+1)+5; break;
+		case 4: damage = ran.nextInt(20-5+1)+5; break;
+		}
+
+		return damage;
+	}
+
 }
 
 
