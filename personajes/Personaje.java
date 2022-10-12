@@ -2,6 +2,8 @@ package personajes;
 import java.util.*;
 
 public class Personaje{
+	Random ran = new Random();
+
 //Atributes
 	public String nombre;
 	public int vida = 100;
@@ -23,6 +25,18 @@ public class Personaje{
 				System.out.println();
 			}
 		}
+	}
+
+	public int atacar(int atk){
+		int danio=0;
+		switch(atk){
+		case 1: danio = ran.nextInt(35-5+1)+1; break;
+		case 2: danio = ran.nextInt(45-5+1)+1; break;
+		case 3: danio = ran.nextInt(50-5+1)+1; break;
+		case 4: danio = ran.nextInt(15-5+1)+1; break;
+		}
+
+		return danio;
 	}
 
 }
